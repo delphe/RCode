@@ -1,0 +1,8 @@
+# Simulated vulnerable R code with SQL injection
+user_input <- "'; DROP TABLE users; --"
+
+# Constructing SQL query with user input (vulnerable)
+query <- paste("SELECT * FROM users WHERE username = '", user_input, "'", sep = "")
+
+# Executing the SQL query (vulnerable to SQL injection)
+result <- dbGetQuery(conn, query)
